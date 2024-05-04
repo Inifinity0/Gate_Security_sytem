@@ -9,7 +9,7 @@
 #include <WiFiClient.h>
 
 char auth[] = BLYNK_AUTH_TOKEN;
-char ssid[] = "Redmi 10";    //ssid or hotspot name
+char ssid[] = "Anurag's Wifi";    //ssid or hotspot name
 char pass[] = "012345687";       // password
 
 
@@ -38,8 +38,8 @@ void setup() {
   
   pinMode(SENSOR_1, INPUT); 
   pinMode(LED_buzzer, OUTPUT);   
-   pinMode (LDRSensor_1, INPUT);
-    pinMode (LDRSensor_2, INPUT);      
+  pinMode (LDRSensor_1, INPUT);
+  pinMode (LDRSensor_2, INPUT);      
   Serial.begin(9600);
   Blynk.begin(auth, ssid, pass);
   
@@ -47,8 +47,8 @@ void setup() {
   
   analogWrite(LED_buzzer, 0); 
 
-
 }
+
 
 void loop() {
   Blynk.run();
@@ -56,13 +56,15 @@ void loop() {
    int sensorvalue1 = digitalRead(SENSOR_1);    
    int sensorvalue2 = digitalRead(SENSOR_2);
    int sensorvalue3 = digitalRead(SENSOR_3);
+
+  // view sensors value in serial monitor
   Serial.print(sensorvalue1);
   Serial.println(sensorvalue2);
-  
   Serial.println(sensorvalue3);
 
-   int Sensordata_1 = digitalRead (LDRSensor_1);
-    int Sensordata_2 = digitalRead (LDRSensor_2);
+  //  LASER protection sensors 
+  int Sensordata_1 = digitalRead(LDRSensor_1);
+  int Sensordata_2 = digitalRead(LDRSensor_2);
   
   if (sensorvalue1== 1 ) 
   {
